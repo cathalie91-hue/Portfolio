@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap");
 
+/* ===== VARIABLES ===== */
 :root {
   --header-height: 3.5rem;
 
-  /*===== Couleurs =====*/
+  /* Couleurs */
   --hue: 330;
   --first-color: hsl(var(--hue), 90%, 55%);
   --first-color-alt: hsl(var(--hue), 95%, 50%);
@@ -14,7 +15,7 @@
   --body-color: hsl(240, 100%, 2%);
   --container-color: hsl(240, 8%, 6%);
 
-  /*===== Typographie =====*/
+  /* Typographie */
   --body-font: "Montserrat", sans-serif;
   --second-font: "Unbounded", sans-serif;
   --biggest-font-size: 2rem;
@@ -26,16 +27,17 @@
   --small-font-size: 0.813rem;
   --smaller-font-size: 0.75rem;
 
-  /*==== Font Weight =====*/
+  /* Poids de police */
   --font-regular: 400;
   --font-medium: 500;
   --font-semi-bold: 600;
 
-  /*==== Z-Index =====*/
+  /* Z-Index */
   --z-tooltip: 10;
   --z-fixed: 100;
 }
 
+/* ===== RESPONSIVE TYPO ===== */
 @media screen and (min-width: 1150px) {
   :root {
     --biggest-font-size: 3rem;
@@ -49,6 +51,7 @@
   }
 }
 
+/* ===== RESET & BASE ===== */
 * {
   box-sizing: border-box;
   padding: 0;
@@ -59,26 +62,21 @@ html {
   scroll-behavior: smooth;
 }
 
-body,
-button {
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
 }
 
-body {
-  background-color: var(--body-color);
-  color: var(--text-color);
-}
-
 button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
   outline: none;
   border: none;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   color: var(--title-color);
   font-family: var(--second-font);
   font-weight: var(--font-semi-bold);
@@ -98,6 +96,7 @@ img {
   height: auto;
 }
 
+/* ===== CLASSES UTILES ===== */
 .container {
   max-width: 1120px;
   margin-inline: 1.5rem;
@@ -113,21 +112,18 @@ img {
 }
 
 .section__title {
-  text-align: center;
   font-size: var(--h1-font-size);
   margin-bottom: 3rem;
+  text-align: center;
 }
 
 .section_title span {
   color: var(--first-color);
 }
 
-.main {
-  overflow: hidden;
-}
-
-/*==== Blob - Effet visible mais épuré ====*/
+/* ===== ANIMATION BLOB ===== */
 .blob-animate {
+  position: absolute;
   width: 100px;
   height: 100px;
   background: linear-gradient(
@@ -136,27 +132,22 @@ img {
     var(--first-color-light) 100%
   );
   border-radius: 50%;
-  position: absolute;
   filter: blur(35px);
   z-index: -1;
   animation: animateBlob 5s linear infinite;
 }
 
 @keyframes animateBlob {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
 }
 
-/*==== Header & Nav ====*/
+/* ===== HEADER & NAVIGATION ===== */
 .header {
   position: fixed;
-  width: 100%;
   top: 0;
   left: 0;
+  width: 100%;
   background: transparent;
   z-index: var(--z-fixed);
 }
@@ -173,10 +164,10 @@ img {
 }
 
 .nav__logo {
+  align-self: flex-start;
+  color: var(--title-color);
   font-family: var(--second-font);
   font-weight: var(--font-semi-bold);
-  color: var(--title-color);
-  align-self: flex-start;
   transition: color 0.4s;
 }
 
@@ -202,44 +193,38 @@ img {
   text-shadow: 0 8px 16px var(--first-color);
 }
 
-/*==== HOME - EFFET VISIBLE, TRUC GÊNANT SUPPRIMÉ ====*/
+/* ===== SECTION HOME ===== */
 .home {
   position: relative;
+  min-height: 100vh;
   padding-top: 4rem;
   row-gap: 3rem;
-  min-height: 100vh;
 }
 
 .home__greeting {
+  color: var(--first-color);
   font-size: var(--h2-font-size);
   font-weight: var(--font-regular);
-  color: var(--first-color);
 }
 
 .home__name {
   font-size: var(--biggest-font-size);
 }
 
-/* IMAGE CENTRÉE */
 .home__image {
+  position: relative;
   width: 300px;
   height: 400px;
-  position: relative;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  top: 20px;
+  margin: 20px auto 0;
   overflow-y: visible;
 }
 
-/* BLOB - EFFET VISIBLE AMÉLIORÉ */
 .home__image .blob-animate {
   position: absolute;
-  width: 110% !important;
-  height: 110% !important;
   top: -5%;
   left: -5%;
+  width: 110% !important;
+  height: 110% !important;
   background: linear-gradient(
     180deg,
     var(--first-color-alt) 20%,
@@ -253,27 +238,14 @@ img {
 }
 
 .home__perfil {
+  position: relative;
   width: 90% !important;
   height: 90% !important;
   object-fit: cover !important;
-  border-radius: 50% !important;
   border: 3px solid var(--first-color);
-  position: relative;
+  border-radius: 50% !important;
+  box-shadow: 0 0 30px rgba(255, 64, 128, 0.2);
   z-index: 1;
-  box-shadow: 0 0 30px rgba(255, 64, 128, 0.2);
-}
-
-/* SUPPRESSION DU TRUC GÊNANT - BORDURE NOIRE OU OMBRE INDÉSIRABLE */
-.home__perfil {
-  outline: none;
-  box-shadow: 0 0 30px rgba(255, 64, 128, 0.2);
-}
-
-.home__shadow,
-.home__info,
-.home__social,
-.home__cv {
-  position: absolute;
 }
 
 .home__shadow {
@@ -281,22 +253,23 @@ img {
 }
 
 .home__info {
-  z-index: 2;
+  position: absolute;
   bottom: -1rem;
   justify-self: center;
+  z-index: 2;
 }
 
 .home__split {
+  color: var(--first-color);
   font-size: var(--h3-font-size);
   font-weight: var(--font-regular);
-  color: var(--first-color);
 }
 
 .home__profession-1,
 .home__profession-2 {
   font-size: var(--bigger-font-size);
-  text-align: center;
   overflow: hidden;
+  text-align: center;
 }
 
 .home__profession-1 {
@@ -306,27 +279,26 @@ img {
 
 .home__profession-1::after {
   content: "";
-  width: 100%;
-  height: 100%;
-  background: transparent;
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
 }
 
 .home__profession-2 {
   transform: translateX(-1rem);
 }
 
-/*==== LIENS PLUS HAUT ====*/
 .home__social {
-  z-index: 2;
-  left: 8%;
+  position: absolute;
   bottom: 6rem;
-  align-self: center;
+  left: 8%;
   display: flex;
   flex-direction: column;
   row-gap: 0.75rem;
+  z-index: 2;
 }
 
 .home__social-link {
@@ -342,17 +314,17 @@ img {
 
 .home__cv {
   position: absolute;
-  z-index: 2;
-  right: 8%;
   bottom: 6rem;
-  rotate: -90deg;
-  color: var(--text-color);
-  font: var(--font-medium) var(--small-font-size) var(--second-font);
+  right: 8%;
   display: flex;
   align-items: center;
   column-gap: 0.5rem;
-  transition: color 0.4s;
+  color: var(--text-color);
+  font: var(--font-medium) var(--small-font-size) var(--second-font);
+  rotate: -90deg;
   text-decoration: none;
+  transition: color 0.4s;
+  z-index: 2;
 }
 
 .home__cv:hover {
@@ -368,7 +340,19 @@ img {
   transform: translateX(4px);
 }
 
-/*==== Breakpoints ====*/
+/* ===== AUTRES SECTIONS ===== */
+.about,
+.projects,
+.work,
+.footer {
+  display: block;
+  min-height: auto;
+  padding: 4rem 0;
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Mobile (très petit) */
 @media screen and (max-width: 320px) {
   .container {
     margin-inline: 1rem;
@@ -378,18 +362,19 @@ img {
     width: 220px;
     height: 220px;
   }
-  
+
   .home__social {
+    bottom: 5.5rem;
     left: 5%;
-    bottom: 5.5rem;
   }
-  
+
   .home__cv {
-    right: 5%;
     bottom: 5.5rem;
+    right: 5%;
   }
 }
 
+/* Mobile/Tablette */
 @media screen and (min-width: 540px) {
   .home__container {
     width: 460px;
@@ -401,8 +386,19 @@ img {
   .home__container {
     width: 600px;
   }
+
+  .home__social {
+    bottom: 5.5rem;
+    left: 6%;
+  }
+
+  .home__cv {
+    bottom: 5.5rem;
+    right: 6%;
+  }
 }
 
+/* Desktop */
 @media screen and (min-width: 1150px) {
   .container {
     margin-inline: auto;
@@ -452,9 +448,10 @@ img {
   }
 
   .home__info {
+    position: absolute;
     top: 12rem;
     right: 1rem;
-    bottom: initial;
+    bottom: auto;
   }
 
   .home__split {
@@ -463,7 +460,7 @@ img {
 
   .home__profession-1 {
     font-size: var(--biggest-font-size);
-    text-align: initial;
+    text-align: left;
   }
 
   .home__profession-2 {
@@ -473,8 +470,8 @@ img {
 
   .home__social {
     bottom: 6rem;
-    row-gap: 1.5rem;
     left: 8%;
+    row-gap: 1.5rem;
   }
 
   .home__social-link {
@@ -482,38 +479,41 @@ img {
   }
 
   .home__cv {
+    bottom: 6rem;
+    right: 8%;
     font-size: var(--normal-font-size);
     rotate: 0deg;
-    right: 8%;
-    bottom: 6rem;
+  }
+
+  .about,
+  .projects,
+  .work,
+  .footer {
+    padding: 6rem 0;
   }
 }
 
+/* Mobile/Tablette (complément) */
 @media screen and (max-width: 768px) {
   .home__social {
+    bottom: 5.5rem;
     left: 6%;
-    bottom: 5.5rem;
   }
+
   .home__cv {
-    right: 6%;
     bottom: 5.5rem;
+    right: 6%;
   }
 }
 
 @media screen and (max-width: 480px) {
   .home__social {
+    bottom: 5.5rem;
     left: 6%;
-    bottom: 5.5rem;
   }
-  .home__cv {
-    right: 6%;
-    bottom: 5.5rem;
-  }
-}
 
-.about,
-.projects,
-.work,
-.footer {
-  display: none;
+  .home__cv {
+    bottom: 5.5rem;
+    right: 6%;
+  }
 }
