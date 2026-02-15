@@ -1,0 +1,45 @@
+{
+    "defaultHue": 330,
+    "themes": [
+        {
+            "name": "Rose",
+            "hue": 330,
+            "description": "Rose/Magenta (défaut)"
+        },
+        {
+            "name": "Violet",
+            "hue": 255,
+            "description": "Violet profond"
+        },
+        {
+            "name": "Bleu",
+            "hue": 220,
+            "description": "Bleu océan"
+        },
+        {
+            "name": "Rose clair",
+            "hue": 300,
+            "description": "Rose pastel"
+        },
+        {
+            "name": "Vert",
+            "hue": 110,
+            "description": "Vert nature"
+        },
+        {
+            "name": "Cyan",
+            "hue": 180,
+            "description": "Cyan turquoise"
+        },
+        {
+            "name": "Orange",
+            "hue": 15,
+            "description": "Orange soleil"
+        },
+        {
+            "name": "Rouge",
+            "hue": 358,
+            "description": "Rouge passion"
+        }
+    ]
+}

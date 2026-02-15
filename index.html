@@ -6,6 +6,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="/assets/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"/>
     <link rel="stylesheet" href="./files/style.css"/>
     <title>Portfolio</title>
@@ -13,30 +15,40 @@
 <body>
     <header class="header" id="header">
         <div class="blob-animate"></div>
-
         <nav class="nav container">
             <a href="#" class="nav__logo">Cathalie</a>
-
             <div class="nav__menu">
                 <ul class="nav__list">
                     <li>
-                        <a href="#about" class="nav__link">About</a>
+                      <a href="#about" class="nav__link">About</a>
                     </li>
                     <li>
-                        <a href="#projects" class="nav__link">Projects</a>
+                      <a href="#projects" class="nav__link">Projects</a>
                     </li>
                     <li>
-                        <a href="#contact" class="nav__link">Contact</a>
+                      <a href="#services" class="nav__link">Services</a>
                     </li>
                     <li>
-                        <a href="#services" class="nav__link">Services</a>
+                      <a href="#contact" class="nav__link">Contact</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
 
+   <!-- Language Selector -->
+<div class="language-selector">
+    <button class="lang-btn active" data-lang="fr">🇫🇷 FR</button>
+    <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+</div>
+
+
     <main class="main">
+
+        <!-- Cursor -->
+         <div class="cursor"></div>
+
+        <!-- Home Section -->
         <section class="home section">
             <div class="home__shadow"></div>
 
@@ -71,51 +83,661 @@
                         <i class="ri-gitlab-line"></i>
                     </a>
                 </div>
-                
+
                 <a href="/assets/cv-cathalie.pdf" download target="_blank" class="home__cv">
                     RESUME <i class="ri-file-list-2-line"></i>
                 </a>
             </div>
         </section>
 
-        <section class="about section">
+        <!-- About Section -->
+        <section class="about section" id="about">
             <div class="about__shadow"></div>
-
             <div class="about__container container grid">
                 <div class="about__data">
-                  <h2 class="section__title">
-                    <span>Creativity</span>
-                    <br> Is My Passion
-                  </h2>
+                    <h2 class="section__title">
+                        <span>Creativity</span>
+                        <br>Is My Passion
+                    </h2>
 
-                  <p class="about__description">
-                    A young IT professional specializing in digital
-                    expertise and web development. Focused on building 
-                    functional websites and solving technical problems
-                    with clean, efficient code. Passionate about 
-                    understanding how digital tools can serve real-world
-                    needs.
-                  </p>
-
-                  <a href="/assets/cv-cathalie.pd" download target="_blank" class="button">
-                    Resume <i class="ri-file-list-2-line"></i>
-                  </a>
+                    <p class="about__description">
+                        A young <b>IT professional</b> specializing in digital 
+                        expertise and web development. Focused on building functional 
+                        websites and solving technical problems with clean, efficient 
+                        code. Passionate about understanding how digital tools can serve real-world needs.
+                    </p>
+                    <a href="/assets/cv-cathalie.pd" download target="_blank" class="button">
+                        Resume <i class="ri-file-list-2-line"></i>
+                    </a>
                 </div>
-
                 <div class="about__image">
-
+                    <div class="blob-animate"></div>
+                    <div class="blob-animate"></div>
+                    <img src="/assets/spider-gwen-action-ready-adventure-girl-w4.jpg" alt="me" class="about__perfil">
                 </div>
             </div>
         </section>
 
+        <!-- Projects Section -->
+        <section class="projects section" id="projects">
+            <h2 class="section__title">I Make Incredible <br><span>Projects</span></h2>
+            <div class="projects__container container grid">
+                <div class="projects__swiper swiper">
+                    <div class="swiper-wrapper">
+                        <article class="projects__card swiper-slide">
+                            <div class="blob"></div>
+                            <div class="projects__number">
+                                <h1>01</h1>
+                                <h3>Web</h3>
+                            </div>
+                            <div class="projects__data">
+                                <h3 class="projects__title">Hotel website</h3>
+                                <p class="projects__subtitle">Technologies used</p>
+                                <p class="projects__description">HTML, CSS, JavaScript, Python, Django and Figma</p>
+                            </div>
+                            <div class="projects__image">
+                                <img src="/assets/Capture d’écran_13-2-2026_175141_127.0.0.1.jpeg" alt="image" class="projects__img">
+                                <a href="#" target="_blank" class="projects__button">
+                                    <i class="ri-arrow-right-up-long-fill"></i>
+                                </a>
+                            </div>
+                        </article>
+                        <article class="projects__card swiper-slide">
+                            <div class="blob"></div>
+                            <div class="projects__number">
+                                <h1>02</h1>
+                                <h3>Web</h3>
+                            </div>
+                            <div class="projects__data">
+                                <h3 class="projects__title">Hotel website</h3>
+                                <p class="projects__subtitle">Hotel reception</p>
+                                <p class="projects__description">HTML, CSS, JavaScript, Python, Django and Figma</p>
+                            </div>
+                            <div class="projects__image">
+                                <img src="/assets/Capture d’écran_13-2-2026_175141_127.0.0.1.jpeg" alt="image" class="projects__img">
+                                <a href="#" target="_blank" class="projects__button">
+                                    <i class="ri-arrow-right-up-long-fill"></i>
+                                </a>
+                            </div>
+                        </article>
+                        <article class="projects__card swiper-slide">
+                            <div class="blob"></div>
+                            <div class="projects__number">
+                                <h1>03</h1>
+                                <h3>Web</h3>
+                            </div>
+                            <div class="projects__data">
+                                <h3 class="projects__title">Hotel website</h3>
+                                <p class="projects__subtitle">Hotel reception</p>
+                                <p class="projects__description">HTML, CSS, JavaScript, Python, Django and Figma</p>
+                            </div>
+                            <div class="projects__image">
+                                <img src="/assets/Capture d’écran_13-2-2026_175141_127.0.0.1.jpeg" alt="image" class="projects__img">
+                                <a href="#" target="_blank" class="projects__button">
+                                    <i class="ri-arrow-right-up-long-fill"></i>
+                                </a>
+                            </div>
+                        </article>
+                        <article class="projects__card swiper-slide">
+                            <div class="blob"></div>
+                            <div class="projects__number">
+                                <h1>04</h1>
+                                <h3>Web</h3>
+                            </div>
+                            <div class="projects__data">
+                                <h3 class="projects__title">Hotel website</h3>
+                                <p class="projects__subtitle">Hotel reception</p>
+                                <p class="projects__description">HTML, CSS, JavaScript, Python, Django and Figma</p>
+                            </div>
+                            <div class="projects__image">
+                                <img src="/assets/Capture d’écran_13-2-2026_175141_127.0.0.1.jpeg" alt="image" class="projects__img">
+                                <a href="#" target="_blank" class="projects__button">
+                                    <i class="ri-arrow-right-up-long-fill"></i>
+                                </a>
+                            </div>
+                        </article>
+                        <article class="projects__card swiper-slide">
+                            <div class="blob"></div>
+                            <div class="projects__number">
+                                <h1>05</h1>
+                                <h3>Web</h3>
+                            </div>
+                            <div class="projects__data">
+                                <h3 class="projects__title">Hotel website</h3>
+                                <p class="projects__subtitle">Hotel reception</p>
+                                <p class="projects__description">HTML, CSS, JavaScript, Python, Django and Figma</p>
+                            </div>
+                            <div class="projects__image">
+                                <img src="/assets/Capture d’écran_13-2-2026_175141_127.0.0.1.jpeg" alt="image" class="projects__img">
+                                <a href="#" target="_blank" class="projects__button">
+                                    <i class="ri-arrow-right-up-long-fill"></i>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
 
-        <section class="projects section"></section>
-        <section class="work section"></section>
+        <!-- Work Section -->
+        <section class="work section">
+            <h2 class="section__title">
+                <span>My Work</span>
+                <br>Experience
+            </h2>
+            
+            <div class="work__container container grid">
+                <!-- Tabs -->
+                <div class="work__tabs">
+                    <button class="work__button work__active" data-target="#experience">
+                        Experience<i class="ri-briefcase-3-line"></i>
+                    </button>
+
+                    <button class="work__button" data-target="#education">
+                        Education<i class="ri-graduation-cap-line"></i>
+                    </button>
+                </div>
+
+                <!-- Content Area -->
+                <div class="work__area">
+                    <!-- Experience Content -->
+                    <div class="work__content work__active" id="experience">
+                        <article class="work__card">
+                            <div class="work__data">
+                                <div>
+                                    <h3 class="work__title">
+                                        Web Developer
+                                    </h3>
+                                    <p class="work__subtitle">
+                                        Développement web et stratégie digitale
+                                    </p>
+                                </div>
+                                <span class="work__year">2023</span>
+                            </div>
+                            <p class="work__description">
+                                Web development and digital strategy, creating functional, 
+                                custom websites with a focus on performance and optimization.
+                            </p>
+                        </article>
+
+                        <article class="work__card">
+                            <div class="work__data">
+                                <div>
+                                    <h3 class="work__title">
+                                        Web Designer
+                                    </h3>
+                                    <p class="work__subtitle">
+                                        UI/UX Design avec Figma
+                                    </p>
+                                </div>
+                                <span class="work__year">2024</span>
+                            </div>
+                            <p class="work__description">
+                                Web design and UI/UX creation using Figma, crafting intuitive
+                                and visually appealing interfaces for modern websites.
+                            </p>
+                        </article>
+
+                        <article class="work__card">
+                            <div class="work__data">
+                                <div>
+                                    <h3 class="work__title">
+                                        SEO & Web Optimization
+                                    </h3>
+                                    <p class="work__subtitle">
+                                        Performance et visibilité
+                                    </p>
+                                </div>
+                                <span class="work__year">Now</span>
+                            </div>
+                            <p class="work__description">
+                                SEO & web optimization: improving site performance, speed, 
+                                and visibility to enhance user experience and search engine ranking.
+                            </p>
+                        </article>
+                    </div>
+
+                    <!-- Education Content -->
+                    <div class="work__content" id="education">
+                        <article class="work__card">
+                            <div class="work__data">
+                                <div>
+                                    <h3 class="work__title">
+                                        L1 MDI
+                                    </h3>
+                                    <p class="work__subtitle">
+                                        Bachelor's Degree in Computer Science
+                                    </p>
+                                </div>
+                                <span class="work__year">2024 - 2025</span>
+                            </div>
+                            <p class="work__description">
+                                SEO & web optimization: improving site performance, speed, 
+                                and visibility to enhance user experience and search engine ranking.
+                            </p>
+                        </article>
+
+                        <article class="work__card">
+                            <div class="work__data">
+                                <div>
+                                    <h3 class="work__title">
+                                        L2 MDI
+                                    </h3>
+                                    <p class="work__subtitle">
+                                        Bachelor's Degree in Computer Science
+                                    </p>
+                                </div>
+                                <span class="work__year">Now</span>
+                            </div>
+                            <p class="work__description">
+                                Specialization in web development, mastering technologies to build
+                                functional websites.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+         <section class="services section" id="services">
+            <h2 class="section__title">What I <span>Offer</span></h2>
+
+            <div class="services__container container grid">
+               <div class="services__card services-open">
+                  <div class="blob"></div>
+
+                  <div class="services__data">
+                    <h2 class="services__title">Developer</h2>
+                    <p class="services__description">
+                        Website creation with HTML, CSS, JavaScript and Python.
+                        Professional websites with Django.
+                    </p>
+                  </div>
+
+                  <div class="services__info">
+                    <h3 class="services__subtitle">Skills & Tools</h3>
+
+                    <ul class="services__skills">
+                        <li class="services__skill">HTML</li>
+                        <li class="services__skill">CSS</li>
+                        <li class="services__skill">JavaScript</li>
+                        <li class="services__skill">Java</li>
+                        <li class="services__skill">Python</li>
+                        <li class="services__skill">Django</li>
+                        <li class="services__skill">GitHub</li>
+                    </ul>
+                  </div>
+
+                  <button class="services__button">
+                     <i class="ri-arrow-down-s-line"></i>
+                  </button>
+               </div> 
+
+               <div class="services__card services-close">
+                  <div class="blob blob-2"></div>
+
+                  <div class="services__data">
+                    <h2 class="services__title">Designer</h2>
+                    <p class="services__description">
+                        Web designer with Figma, creating motion design
+                        with After Effects, Canva and design at its best.
+                    </p>
+                  </div>
+
+                  <div class="services__info">
+                    <h3 class="services__subtitle">Skills & Tools</h3>
+
+                    <ul class="services__skills">
+                        <li class="services__skill">Figma</li>
+                        <li class="services__skill">Photoshop</li>
+                        <li class="services__skill">3D Modeling</li>
+                        <li class="services__skill">After Effects</li>
+                        <li class="services__skill">Canva</li>
+                    </ul>
+                  </div>
+
+                  <button class="services__button">
+                    <i class="ri-arrow-down-s-line"></i>
+                  </button>
+               </div> 
+
+            </div>
+         </section>
+
+        <!-- Testimonials -->
+         <section class="testimonials section">
+            <h2 class="section__title">
+                <span>What They Say</span>
+                <br>About Me
+            </h2>
+
+            <!-- Testimonials Card 1 -->
+            <div class="testimonials__container container grid">
+                <div class="testimonials__content">
+                    <article class="testimonials__card">
+                        <div class="blob"></div>
+
+                        <div class="testimonials__data">
+                            <img src="/assets/1312122.png" alt="image" class="testimonials__img">
+
+                            <h2 class="testimonials__name">Sawagiri</h2>
+
+                            <div class="testimonials__rating">
+                                <div class="testimonials__stars">
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+
+                                <h3 class="testimonials__number">5.0</h3>
+                            </div>
+
+                            <p>
+                                gjvdcuodvvcfwouivfievbhfeibhgihbng
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="testimonials__card">
+                        <div class="blob"></div>
+
+                        <div class="testimonials__data">
+                            <img src="/assets/982421.jpg" alt="image" class="testimonials__img">
+
+                            <h2 class="testimonials__name">Maelle</h2>
+
+                            <div class="testimonials__rating">
+                                <div class="testimonials__stars">
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+
+                                <h3 class="testimonials__number">5.0</h3>
+                            </div>
+
+                            <p>
+                                gjvdcuodvvcfwouivfievbhfeibhgihbng
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="testimonials__card">
+                        <div class="blob"></div>
+
+                        <div class="testimonials__data">
+                            <img src="/assets/jinx-beautiful-chaos-y5.jpg" alt="image" class="testimonials__img">
+
+                            <h2 class="testimonials__name">Jinx</h2>
+
+                            <div class="testimonials__rating">
+                                <div class="testimonials__stars">
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+
+                                <h3 class="testimonials__number">5.0</h3>
+                            </div>
+
+                            <p>
+                                gjvdcuodvvcfwouivfievbhfeibhgihbng
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="testimonials__card">
+                        <div class="blob"></div>
+
+                        <div class="testimonials__data">
+                            <img src="/assets/kakashi-hatake-5k-b5.jpg" alt="image" class="testimonials__img">
+
+                            <h2 class="testimonials__name">Kakashi</h2>
+
+                            <div class="testimonials__rating">
+                                <div class="testimonials__stars">
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+
+                                <h3 class="testimonials__number">5.0</h3>
+                            </div>
+
+                            <p>
+                                gjvdcuodvvcfwouivfievbhfeibhgihbng
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+
+                <!-- Testimonials Card 2 -->
+                <div class="testimonials__content testimonials__reverse">
+                    <article class="testimonials__card">
+                        <div class="blob"></div>
+
+                        <div class="testimonials__data">
+                            <img src="/assets/1312122.png" alt="image" class="testimonials__img">
+
+                            <h2 class="testimonials__name">Sawagiri</h2>
+
+                            <div class="testimonials__rating">
+                                <div class="testimonials__stars">
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+
+                                <h3 class="testimonials__number">5.0</h3>
+                            </div>
+
+                            <p>
+                                gjvdcuodvvcfwouivfievbhfeibhgihbng
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="testimonials__card">
+                        <div class="blob"></div>
+
+                        <div class="testimonials__data">
+                            <img src="/assets/982421.jpg" alt="image" class="testimonials__img">
+
+                            <h2 class="testimonials__name">Maelle</h2>
+
+                            <div class="testimonials__rating">
+                                <div class="testimonials__stars">
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+
+                                <h3 class="testimonials__number">5.0</h3>
+                            </div>
+
+                            <p>
+                                gjvdcuodvvcfwouivfievbhfeibhgihbng
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="testimonials__card">
+                        <div class="blob"></div>
+
+                        <div class="testimonials__data">
+                            <img src="/assets/jinx-beautiful-chaos-y5.jpg" alt="image" class="testimonials__img">
+
+                            <h2 class="testimonials__name">Jinx</h2>
+
+                            <div class="testimonials__rating">
+                                <div class="testimonials__stars">
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+
+                                <h3 class="testimonials__number">5.0</h3>
+                            </div>
+
+                            <p>
+                                gjvdcuodvvcfwouivfievbhfeibhgihbng
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="testimonials__card">
+                        <div class="blob"></div>
+
+                        <div class="testimonials__data">
+                            <img src="/assets/kakashi-hatake-5k-b5.jpg" alt="image" class="testimonials__img">
+
+                            <h2 class="testimonials__name">Kakashi</h2>
+
+                            <div class="testimonials__rating">
+                                <div class="testimonials__stars">
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+
+                                <h3 class="testimonials__number">5.0</h3>
+                            </div>
+
+                            <p>
+                                gjvdcuodvvcfwouivfievbhfeibhgihbng
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+         </section>
+
+        <!-- Contact -->
+         <section class="contact section" id="contact">
+            <div class="contact__container container grid">
+                <div class="contact__data">
+                   <h2 class="section__title">Contact Me</h2>
+
+                   <p class="contact__description">Tell me about your next project.</p>
+
+                   <button class="contact__button button" id="contact-btn">
+                    Copy email <i class="ri-file-copy-line"></i>
+
+                    <span class="contact__email" id="contact-email">Cathalie91@gmail.com</span>
+                   </button>
+                </div>
+
+                <div class="contact__content grid">
+                   <div class="contact__info grid">
+                      <div>
+                        <h3 class="contact__title">Email</h3>
+                        <adress class="contact__adress">Cathalie91@gmail.com</adress>
+                      </div>
+
+                      <div>
+                        <h3 class="contact__title">Location</h3>
+                        <adress class="contact__adress">Antananarivo, Madagascar</adress>
+                      </div>
+                   </div>
+
+                   <div class="contact__social">
+                      <h3 class="contact__title">Social Media</h3>
+
+                      <div class="contact__links">
+                         <a href="https://www.linkedin.com" target="_blank" class="contact__link">
+                            Linkedin
+                            <i class="ri-arrow-right-up-long-line"></i>
+                         </a>
+
+                         <a href="https://github.com" target="_blank" class="contact__link">
+                            GitHub
+                            <i class="ri-arrow-right-up-long-line"></i>
+                         </a>
+
+                         <a href="https://dribbble.com" target="_blank" class="contact__link">
+                            Dribbble
+                            <i class="ri-arrow-right-up-long-line"></i>
+                         </a>
+
+                         <a href="https://about.gitlab.com" target="_blank" class="contact__link">
+                            GitLab
+                            <i class="ri-arrow-right-up-long-line"></i>
+                         </a>
+
+                      </div>
+                   </div>
+
+                   <div class="contact__write">
+                      <h3 class="contact__title">Write Me & We'll Talk</h3>
+
+                      <div class="contact__links">
+                         <a href="https://api.whatsapp.com/send?phone=51123456789&text=Hello" target="_blank" class="contact__link">
+                            WhatsApp
+                            <i class="ri-arrow-right-up-long-line"></i>
+                         </a>
+
+                         <a href="https://m.me/bedimcode" target="_blank" class="contact__link">
+                            Messenger
+                            <i class="ri-arrow-right-up-long-line"></i>
+                         </a>
+           
+                         <a href="https://t.me/telegram" target="_blank" class="contact__link">
+                            Telegram
+                            <i class="ri-arrow-right-up-long-line"></i>
+                         </a>
+           
+                         <a href="https://www.instagram.com" target="_blank" class="contact__link">
+                            Instagram
+                            <i class="ri-arrow-right-up-long-line"></i>
+                         </a>
+
+                      </div>
+                   </div>
+
+                </div>
+            </div>
+         </section>
+
+
     </main>
 
-    <footer class="footer grid"></footer>
+    <footer class="footer grid">
+       <div class="blob-animate"></div>
+
+       <div class="footer__copy">
+          All Rights Reserved By <span>Cathalie</span>
+       </div>
+
+       <div class="footer__year">
+        &#169; <span id="footer-year"></span>
+       </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <script src="/assets/swiper-bundle.min.js"></script>
     <script src="/files/script.js"></script>
+    <script src="/files/translator.js"></script>
 </body>
 </html>
