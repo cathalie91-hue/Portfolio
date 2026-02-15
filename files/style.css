@@ -725,7 +725,7 @@ span {
   display: none;
 }
 
-.work-active[data-content] {
+.work__active[data-content] {
   display: grid;
 }
 

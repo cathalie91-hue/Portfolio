@@ -49,20 +49,20 @@ const swiperProjects = new Swiper('.projects__swiper', {
 
 // Work Tabs
 const tabs = document.querySelectorAll('[data-target]'),
-      tabContents = document.querySelectorAll('[data-content]');
+      tabContents = document.querySelectorAll('[data-content]')
 
 tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-        const targetSelector = tab.dataset.target;
-              targetContent = document.querySelector(targetSelector);
+        const targetSelector = tab.dataset.target,
+              targetContent = document.querySelector(targetSelector)
 
-tabContents.forEach((content) => content.classList.remove('work__active'));
-tabs.forEach((t) => t.classList.remove('work__active'));
+tabContents.forEach((content) => content.classList.remove('work__active'))
+tabs.forEach((t) => t.classList.remove('work__active'))
 
-tab.classList.add('work__active');
-targetContent.classList.add('work__active');
-    });
-});
+tab.classList.add('work__active')
+targetContent.classList.add('work__active')
+    })
+})
 
 // Services
 const servicesButtons = document.querySelectorAll('.services__button')
