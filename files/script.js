@@ -142,37 +142,46 @@ const scrollActive = () => {
 }
 window.addEventListener('scroll', scrollActive)
 
-// Cursor
-const cursor = document.querySelector('.cursor')
-let mouseX = 0, mouseY = 0
-let cursorX = 0, cursorY = 0
+// Cursor - Version corrigée
+const cursor = document.querySelector('.cursor');
 
-const cursorMove = () => {
-    cursor.style.left = `${cursorX}px`
-    cursor.style.top = `${mouseY}px`
-    cursor.style.transform = `translate(-50%, -50%)`
-    requestAnimationFrame(cursorMove)
+if (cursor) {
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+    const speed = 0.15; // Fluidité du mouvement
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function animateCursor() {
+        // Animation fluide vers la position de la souris
+        cursorX += (mouseX - cursorX) * speed;
+        cursorY += (mouseY - cursorY) * speed;
+
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        cursor.style.transform = 'translate(-50%, -50%)';
+
+        requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+    // Gestion de la disparition sur les liens et boutons
+    const interactiveElements = document.querySelectorAll('a, button, .projects__button, .services__button, .work__button');
+    
+    interactiveElements.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            cursor.classList.add('hide-cursor');
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hide-cursor');
+        });
+    });
 }
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX
-    mouseY = e.clientY
-})
-
-cursorMove()
-
-
-const a = document.querySelectorAll('a')
-
-a.forEach(item => {
-    item.addEventListener('mouseover', () => {
-        cursor.classList.add('hide-cursor')
-    })
-    item.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hide-cursor')
-    })
-})
-
 
 const sr = ScrollReveal({
     origin: 'top',
