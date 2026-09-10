@@ -39,6 +39,13 @@ const translations = {
         "Performance et visibilité": "Performance and visibility",
         "Aujourd'hui": "Now",
         "Licence en Informatique": "Bachelor's Degree in Computer Science",
+
+        // Descriptions Expérience
+        "Développement web et stratégie digitale, création de sites fonctionnels et sur mesure avec un accent sur la performance et l'optimisation.": "Web development and digital strategy, creating functional, custom websites with a focus on performance and optimization.",
+        "Web design et création UI/UX avec Figma, conception d'interfaces intuitives et visuellement attractives pour des sites web modernes.": "Web design and UI/UX creation using Figma, crafting intuitive and visually appealing interfaces for modern websites.",
+        "SEO et optimisation web : amélioration des performances, de la vitesse et de la visibilité d'un site pour enrichir l'expérience utilisateur et le référencement.": "SEO & web optimization: improving site performance, speed, and visibility to enhance user experience and search engine ranking.",
+
+        // Descriptions Formation
         "Spécialisation en développement web, maîtrise des technologies pour créer des sites fonctionnels.": "Specialization in web development, mastering technologies to build functional websites.",
 
         // Services
@@ -52,6 +59,10 @@ const translations = {
 
         // Testimonials
         "Ce qu'ils disent À mon sujet": "<span>What They Say</span> <br>About Me",
+        "Elle a intégré une scène 3D sur Spline à mon site et le résultat est vraiment réussi. L'animation est légère, bien pensée et s'intègre parfaitement au design. Elle a su rendre quelque chose de technique à la fois esthétique et fluide. Je la recommande sans hésiter.": "She integrated a 3D scene on Spline into my site and the result is really successful. The animation is light, well thought out and fits perfectly with the design. She managed to make something technical both aesthetic and fluid. I recommend her without hesitation.",
+        "Site livré rapidement et conforme à mes attentes. Merci pour ton implication.": "Site delivered quickly and meeting my expectations. Thank you for your involvement.",
+        "Franchement, j'adore ce que tu fais. Tes animations 3D donnent une vraie personnalité au site, c'est soigné et fluide. Continue comme ça, tu gères vraiment.": "Honestly, I love what you do. Your 3D animations give real personality to the site, it's neat and fluid. Keep it up, you really know what you're doing.",
+        "Je te confierais un projet sans hésiter. Tu es rigoureuse, à l'écoute et le rendu final est toujours soigné. Un travail de qualité, mené avec sérieux.": "I would entrust you with a project without hesitation. You are rigorous, attentive and the final result is always polished. Quality work, carried out seriously.",
 
         // Contact
         "Contactez-moi": "Contact Me",
@@ -105,6 +116,13 @@ const translations = {
         "Performance and visibility": "Performance et visibilité",
         "Now": "Aujourd'hui",
         "Bachelor's Degree in Computer Science": "Licence en Informatique",
+
+        // Descriptions Expérience
+        "Web development and digital strategy, creating functional, custom websites with a focus on performance and optimization.": "Développement web et stratégie digitale, création de sites fonctionnels et sur mesure avec un accent sur la performance et l'optimisation.",
+        "Web design and UI/UX creation using Figma, crafting intuitive and visually appealing interfaces for modern websites.": "Web design et création UI/UX avec Figma, conception d'interfaces intuitives et visuellement attractives pour des sites web modernes.",
+        "SEO & web optimization: improving site performance, speed, and visibility to enhance user experience and search engine ranking.": "SEO et optimisation web : amélioration des performances, de la vitesse et de la visibilité d'un site pour enrichir l'expérience utilisateur et le référencement.",
+
+        // Descriptions Formation
         "Specialization in web development, mastering technologies to build functional websites.": "Spécialisation en développement web, maîtrise des technologies pour créer des sites fonctionnels.",
 
         // Services
@@ -118,6 +136,10 @@ const translations = {
 
         // Testimonials
         "What They Say About Me": "<span>Ce qu'ils disent</span> <br>À mon sujet",
+        "She integrated a 3D scene on Spline into my site and the result is really successful. The animation is light, well thought out and fits perfectly with the design. She managed to make something technical both aesthetic and fluid. I recommend her without hesitation.": "Elle a intégré une scène 3D sur Spline à mon site et le résultat est vraiment réussi. L'animation est légère, bien pensée et s'intègre parfaitement au design. Elle a su rendre quelque chose de technique à la fois esthétique et fluide. Je la recommande sans hésiter.",
+        "Site delivered quickly and meeting my expectations. Thank you for your involvement.": "Site livré rapidement et conforme à mes attentes. Merci pour ton implication.",
+        "Honestly, I love what you do. Your 3D animations give real personality to the site, it's neat and fluid. Keep it up, you really know what you're doing.": "Franchement, j'adore ce que tu fais. Tes animations 3D donnent une vraie personnalité au site, c'est soigné et fluide. Continue comme ça, tu gères vraiment.",
+        "I would entrust you with a project without hesitation. You are rigorous, attentive and the final result is always polished. Quality work, carried out seriously.": "Je te confierais un projet sans hésiter. Tu es rigoureuse, à l'écoute et le rendu final est toujours soigné. Un travail de qualité, mené avec sérieux.",
 
         // Contact
         "Contact Me": "Contactez-moi",
@@ -136,6 +158,16 @@ const translations = {
 
 // Langue actuelle
 let currentLang = localStorage.getItem('preferredLang') || 'fr';
+
+// Fonction utilitaire : normalise le texte pour une comparaison fiable
+function normalizeText(text) {
+    return text
+        .replace(/\s+/g, ' ')           // espaces multiples / retours à la ligne → un seul espace
+        .replace(/[''`]/g, "'")          // apostrophes courbes → droite
+        .replace(/[""]/g, '"')           // guillemets courbes → droits
+        .replace(/\u00A0/g, ' ')         // espace insécable → espace normal
+        .trim();
+}
 
 // Fonction pour changer la langue
 function changeLanguage(lang) {
@@ -168,19 +200,31 @@ function changeLanguage(lang) {
         // Ignorer les éléments vides
         if (!el.innerText.trim()) return;
 
-        // Normaliser le texte : retirer les espaces multiples et les sauts de ligne
-        const rawText = el.innerText.trim();
-        const normalizedText = rawText.replace(/\s+/g, ' ');
+        const normalized = normalizeText(el.innerText);
 
-        // Chercher la traduction (essaie d'abord la version normalisée, puis brute)
+        // Chercher d'abord la version normalisée, puis brute
         const translation =
-            (translations[lang] && translations[lang][normalizedText]) ||
-            (translations[lang] && translations[lang][rawText]);
+            (translations[lang] && translations[lang][normalized]) ||
+            (translations[lang] && translations[lang][el.innerText.trim()]);
 
         if (translation) {
             el.innerHTML = translation;
         }
     });
+
+    // Traduction du message WhatsApp pré-rempli
+    const whatsappLink = document.querySelector('.contact__write .contact__link[href*="whatsapp"]');
+    if (whatsappLink) {
+        const phoneMatch = whatsappLink.href.match(/phone=(\d+)/);
+        const phone = phoneMatch ? phoneMatch[1] : '261328399115';
+        const message = lang === 'en'
+            ? "Hello, I'm contacting you from your website"
+            : "Bonjour, je vous contacte depuis votre site";
+        whatsappLink.href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+    }
+
+    // Met à jour l'attribut lang du HTML
+    document.documentElement.lang = lang;
 
     console.log('Langue changée en :', lang);
 }
