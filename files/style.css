@@ -332,6 +332,47 @@ span {
   color: black;
 }
 
+/* ===== RESPONSIVE DU SÉLECTEUR ===== */
+@media screen and (max-width: 768px) {
+  .language-selector {
+    top: 125px;
+    right: 12px;
+    padding: 3px;
+    gap: 3px;
+  }
+
+  .lang-btn {
+    padding: 2px 7px;
+    font-size: 10px;
+  }
+
+  .theme-btn {
+    width: 26px;
+    height: 26px;
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .language-selector {
+    top: 100px;
+    right: 8px;
+    padding: 2px;
+    gap: 2px;
+  }
+
+  .lang-btn {
+    padding: 2px 6px;
+    font-size: 9px;
+  }
+
+  .theme-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+  }
+}
+
 .theme-btn {
   width: 42px;
   height: 42px;
