@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap");
 
-/* ===== VARIABLES ===== */
+/* ============================================================
+   VARIABLES
+   ============================================================ */
 :root {
   --header-height: 3.5rem;
 
@@ -37,7 +39,9 @@
   --z-fixed: 100;
 }
 
-/* ===== MODE CLAIR ===== */
+/* ============================================================
+   MODE CLAIR
+   ============================================================ */
 :root[data-theme="light"] {
   --body-color: hsl(0, 0%, 98%);
   --title-color: hsl(240, 8%, 10%);
@@ -85,7 +89,9 @@
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* ===== TYPOGRAPHIE RESPONSIVE ===== */
+/* ============================================================
+   TYPOGRAPHIE RESPONSIVE
+   ============================================================ */
 @media screen and (min-width: 1150px) {
   :root {
     --biggest-font-size: 3rem;
@@ -99,7 +105,9 @@
   }
 }
 
-/* ===== RESET & BASE ===== */
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
 * {
   box-sizing: border-box;
   padding: 0;
@@ -148,7 +156,9 @@ span {
   color: var(--first-color);
 }
 
-/* ===== CLASSES UTILES ===== */
+/* ============================================================
+   CLASSES UTILES
+   ============================================================ */
 .container {
   max-width: 1120px;
   margin-inline: 1.5rem;
@@ -169,11 +179,13 @@ span {
   text-align: center;
 }
 
-.section_title span {
+.section__title span {
   color: var(--first-color);
 }
 
-/* ===== SCROLLBAR ===== */
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
 ::-webkit-scrollbar {
   width: .6rem;
   background-color: hsl(240, 6%, 12%);
@@ -189,7 +201,9 @@ span {
   background-color: hsl(240, 6%, 24%);
 }
 
-/* ===== CURSOR PERSONNALISÉ ===== */
+/* ============================================================
+   CURSOR PERSONNALISÉ
+   ============================================================ */
 .cursor {
   position: fixed;
   top: 0;
@@ -220,7 +234,9 @@ span {
   }
 }
 
-/* ===== ANIMATIONS ===== */
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
 @keyframes animateBlob {
   0% { transform: rotate(0); }
   100% { transform: rotate(360deg); }
@@ -231,7 +247,9 @@ span {
   100% { transform: translateX(-50%); }
 }
 
-/* ===== COMPOSANTS RÉUTILISABLES ===== */
+/* ============================================================
+   COMPOSANTS RÉUTILISABLES
+   ============================================================ */
 .blob-animate {
   position: absolute;
   width: 100px;
@@ -286,7 +304,9 @@ span {
               inset 8px -8px 30px var(--first-color-alt-2);
 }
 
-/* ===== SÉLECTEURS THÈME & LANGUE ===== */
+/* ============================================================
+   SÉLECTEURS THÈME & LANGUE
+   ============================================================ */
 .selector-group {
   position: fixed;
   top: 80px;
@@ -330,47 +350,6 @@ span {
 .lang-btn.active {
   background: white;
   color: black;
-}
-
-/* ===== RESPONSIVE DU SÉLECTEUR ===== */
-@media screen and (max-width: 768px) {
-  .language-selector {
-    top: 125px;
-    right: 12px;
-    padding: 3px;
-    gap: 3px;
-  }
-
-  .lang-btn {
-    padding: 2px 7px;
-    font-size: 10px;
-  }
-
-  .theme-btn {
-    width: 26px;
-    height: 26px;
-    font-size: 0.85rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .language-selector {
-    top: 100px;
-    right: 8px;
-    padding: 2px;
-    gap: 2px;
-  }
-
-  .lang-btn {
-    padding: 2px 6px;
-    font-size: 9px;
-  }
-
-  .theme-btn {
-    width: 24px;
-    height: 24px;
-    font-size: 0.8rem;
-  }
 }
 
 .theme-btn {
@@ -462,7 +441,9 @@ span {
   transform: translateY(-2px);
 }
 
-/* ===== HEADER & NAVIGATION ===== */
+/* ============================================================
+   HEADER & NAVIGATION
+   ============================================================ */
 .header {
   position: fixed;
   top: 0;
@@ -514,7 +495,9 @@ span {
   text-shadow: 0 8px 16px var(--first-color);
 }
 
-/* ===== SECTION HOME ===== */
+/* ============================================================
+   SECTION HOME
+   ============================================================ */
 .home {
   position: relative;
   min-height: 100vh;
@@ -661,7 +644,9 @@ span {
   transform: translateX(4px);
 }
 
-/* ===== SECTION ABOUT ===== */
+/* ============================================================
+   SECTION ABOUT
+   ============================================================ */
 .about {
   position: relative;
 }
@@ -720,7 +705,9 @@ span {
               var(--body-color) 95%);
 }
 
-/* ===== SECTION PROJECTS ===== */
+/* ============================================================
+   SECTION PROJECTS
+   ============================================================ */
 .projects .section__title {
   text-align: initial;
   margin-left: 1.5rem;
@@ -740,8 +727,8 @@ span {
   bottom: 0;
 }
 
-.projects__number, 
-.projects__data, 
+.projects__number,
+.projects__data,
 .projects__image {
   position: relative;
   z-index: 1;
@@ -818,7 +805,7 @@ span {
 /* Swiper */
 .projects__swiper {
   margin-inline: initial;
-  padding-bottom: 2rem; 
+  padding-bottom: 2rem;
 }
 
 .projects .swiper-pagination-bullets {
@@ -830,7 +817,9 @@ span {
   transition: opacity .4s;
 }
 
-/* ===== SECTION WORK ===== */
+/* ============================================================
+   SECTION WORK
+   ============================================================ */
 .work__tabs {
   background-color: var(--container-color);
   padding: 1.25rem 2rem;
@@ -861,7 +850,7 @@ span {
 }
 
 .work__area {
-  position: relative;  
+  position: relative;
   padding-left: 1rem;
 }
 
@@ -925,7 +914,9 @@ span {
   left: -6px;
 }
 
-/* ===== SECTION SERVICES ===== */
+/* ============================================================
+   SECTION SERVICES (CORRIGÉE)
+   ============================================================ */
 .services__container {
   row-gap: 2rem;
 }
@@ -933,11 +924,12 @@ span {
 .services__card {
   position: relative;
   background-color: var(--container-color);
-  padding: 2rem 1.5;
+  padding: 2rem 1.5rem 4.5rem 1.5rem;
   border-radius: 3rem;
   display: grid;
   row-gap: 1.5rem;
   overflow: hidden;
+  min-height: 220px;
 }
 
 .services__card .blob {
@@ -951,7 +943,7 @@ span {
   right: -7.75rem;
 }
 
-.services__data, 
+.services__data,
 .services__info {
   position: relative;
   z-index: 1;
@@ -974,6 +966,7 @@ span {
   flex-wrap: wrap;
   align-items: center;
   gap: .5rem .25rem;
+  padding-right: 3rem;
 }
 
 .services__skill {
@@ -999,7 +992,7 @@ span {
   position: absolute;
   right: 1rem;
   bottom: 1rem;
-  z-index: 2;
+  z-index: 3;
   cursor: pointer;
 }
 
@@ -1021,7 +1014,9 @@ span {
   rotate: -180deg;
 }
 
-/* ===== SECTION TESTIMONIALS ===== */
+/* ============================================================
+   SECTION TESTIMONIALS
+   ============================================================ */
 .testimonials .section__title {
   text-align: initial;
   margin-left: 1.5rem;
@@ -1105,7 +1100,9 @@ span {
   animation-delay: -1s;
 }
 
-/* ===== SECTION CONTACT ===== */
+/* ============================================================
+   SECTION CONTACT
+   ============================================================ */
 .contact__container {
   row-gap: 4rem;
   padding-bottom: 2rem;
@@ -1177,10 +1174,12 @@ span {
 
 .contact__link:hover {
   transform: translateX(.35rem);
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
-/* ===== FOOTER ===== */
+/* ============================================================
+   FOOTER
+   ============================================================ */
 .footer {
   position: relative;
   padding-block: 4rem 2rem;
@@ -1203,10 +1202,12 @@ span {
 }
 
 .footer__year span {
-  font-family: var(--second-font)
+  font-family: var(--second-font);
 }
 
-/* ===== MEDIA QUERIES - MOBILE FIRST ===== */
+/* ============================================================
+   MEDIA QUERIES — MOBILE FIRST
+   ============================================================ */
 
 /* Très petits écrans (<=320px) */
 @media screen and (max-width: 320px) {
@@ -1233,7 +1234,7 @@ span {
     padding: 1rem;
   }
 
-  .works__tabs {
+  .work__tabs {
     padding-inline: 1rem;
   }
 
@@ -1247,32 +1248,32 @@ span {
     right: 10px;
     gap: 5px;
   }
-  
+
   .theme-btn {
     width: 34px;
     height: 34px;
     font-size: 1.1rem;
   }
-  
+
   .theme-palette {
     right: 10px;
     min-width: 200px;
     padding: 12px;
     gap: 8px;
   }
-  
+
   .theme-option {
     width: 32px;
     height: 32px;
   }
-  
+
   .palette-mode-btn {
     padding: 10px;
     font-size: 0.9rem;
   }
 }
 
-/* Écrans moyens (540px - 768px) */
+/* Écrans moyens (>=540px) */
 @media screen and (min-width: 540px) {
   .home__container {
     width: 460px;
@@ -1306,7 +1307,7 @@ span {
   }
 }
 
-/* Tablettes (768px - 1150px) */
+/* Tablettes (>=768px) */
 @media screen and (min-width: 768px) {
   .home__container {
     width: 600px;
@@ -1352,25 +1353,25 @@ span {
     right: 10px;
     gap: 5px;
   }
-  
+
   .theme-btn {
     width: 38px;
     height: 38px;
     font-size: 1.1rem;
   }
-  
+
   .theme-palette {
     right: 10px;
     min-width: 220px;
     padding: 12px;
     gap: 8px;
   }
-  
+
   .theme-option {
     width: 38px;
     height: 38px;
   }
-  
+
   .palette-mode-btn {
     padding: 10px;
     font-size: 0.9rem;
@@ -1489,7 +1490,7 @@ span {
     text-align: initial;
     z-index: 2;
   }
-    
+
   .about__description {
     margin-bottom: 3rem;
   }
@@ -1538,11 +1539,11 @@ span {
 
   .projects__card {
     width: 440px;
-    padding: 2.5em;
+    padding: 2.5rem;
     border-radius: 4rem;
   }
 
-  .projects__subtitle, 
+  .projects__subtitle,
   .projects__description {
     font-size: var(--normal-font-size);
   }
@@ -1552,8 +1553,8 @@ span {
   }
 
   .projects__button {
-    top: 1.5em;
-    right: 1.5em;
+    top: 1.5rem;
+    right: 1.5rem;
   }
 
   /* Work */
@@ -1575,7 +1576,7 @@ span {
     font-size: var(--bigger-font-size);
   }
 
-  .work__subtitle, 
+  .work__subtitle,
   .work__description {
     font-size: var(--h3-font-size);
   }
@@ -1685,40 +1686,77 @@ span {
     right: 20px;
     gap: 10px;
   }
-  
+
   .theme-btn {
     width: 42px;
     height: 42px;
     font-size: 1.3rem;
   }
-  
+
   .theme-palette {
     min-width: 260px;
     padding: 15px;
     gap: 10px;
   }
-  
+
   .theme-option {
     width: 45px;
     height: 45px;
   }
-  
+
   .palette-mode-btn {
     padding: 12px;
     font-size: 1rem;
   }
 }
 
-@media screen and (min-width: 2048px) {
-  body {
-    zoom: 1.4;
+/* ============================================================
+   FIX RESPONSIVE — SERVICES (anti-chevauchement du bouton)
+   ============================================================ */
+@media screen and (max-width: 768px) {
+  .services__card {
+    padding: 1.5rem 1.25rem 4rem 1.25rem;
+  }
+
+  .services__button {
+    width: 36px;
+    height: 36px;
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .services__skills {
+    padding-right: 2.5rem;
   }
 }
 
-
 @media screen and (max-width: 480px) {
+  .services__card {
+    padding: 1.25rem 1rem 4rem 1rem;
+  }
+
+  .services__button {
+    width: 34px;
+    height: 34px;
+    font-size: 1.3rem;
+  }
+
+  .services__skills {
+    padding-right: 2.25rem;
+  }
+
   .selector-group {
     flex-direction: column;
     align-items: flex-end;
+  }
+}
+
+/* ============================================================
+   TRÈS GRANDS ÉCRANS
+   ============================================================ */
+@media screen and (min-width: 2048px) {
+  body {
+    zoom: 1.4;
   }
 }
