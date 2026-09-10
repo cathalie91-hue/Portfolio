@@ -961,6 +961,9 @@ span {
 /* ============================================================
    SECTION COMPÉTENCES — EFFET MAGNÉTIQUE + TILT 3D
    ============================================================ */
+/* ============================================================
+   SECTION COMPÉTENCES — ANIMATION AUTO + EFFET MAGNÉTIQUE
+   ============================================================ */
 .skills {
   position: relative;
   padding-block: 6rem 3rem;
@@ -973,10 +976,17 @@ span {
   margin-top: 2rem;
 }
 
-.skills__category {
+.skills__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.skills__category--full {
   width: 100%;
 }
 
+/* ---- Titres de catégorie ---- */
 .skills__subtitle {
   display: flex;
   align-items: center;
@@ -995,8 +1005,21 @@ span {
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, var(--first-color), transparent);
   opacity: 0.4;
+}
+
+.skills__subtitle--front { color: #ffc107; }
+.skills__subtitle--back  { color: #00d4ff; }
+.skills__subtitle--tools { color: #ff4c6a; }
+
+.skills__subtitle--front::after {
+  background: linear-gradient(90deg, #ffc107, transparent);
+}
+.skills__subtitle--back::after {
+  background: linear-gradient(90deg, #00d4ff, transparent);
+}
+.skills__subtitle--tools::after {
+  background: linear-gradient(90deg, #ff4c6a, transparent);
 }
 
 .skills__dot {
@@ -1007,27 +1030,34 @@ span {
   box-shadow: 0 0 12px currentColor;
 }
 
-.skills__dot--front { background: #61dafb; color: #61dafb; }
-.skills__dot--back  { background: #ffd43b; color: #ffd43b; }
+.skills__dot--front { background: #ffc107; color: #ffc107; }
+.skills__dot--back  { background: #00d4ff; color: #00d4ff; }
 .skills__dot--tools { background: #ff4c6a; color: #ff4c6a; }
 
+/* ---- Grille ---- */
 .skills__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1.25rem;
   perspective: 1000px;
 }
 
-.skill-tilt {
+/* ---- Carte ---- */
+.skill-card {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  transform-style: preserve-3d;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  will-change: transform;
+  animation: floatCard 4s ease-in-out infinite;
 }
 
-.skill-tilt__inner {
+.skill-card:nth-child(1) { animation-delay: 0s; }
+.skill-card:nth-child(2) { animation-delay: 0.4s; }
+.skill-card:nth-child(3) { animation-delay: 0.8s; }
+.skill-card:nth-child(4) { animation-delay: 1.2s; }
+.skill-card:nth-child(5) { animation-delay: 1.6s; }
+.skill-card:nth-child(6) { animation-delay: 2s; }
+
+.skill-card__inner {
   position: relative;
   width: 100%;
   height: 100%;
@@ -1043,35 +1073,40 @@ span {
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transform:
+    translate3d(var(--magnet-x, 0), var(--magnet-y, 0), 0)
+    rotateX(var(--tilt-x, 0))
+    rotateY(var(--tilt-y, 0))
+    scale(var(--magnet-scale, 1));
+  transform-style: preserve-3d;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease-out;
 }
 
-.skill-tilt__glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    hsla(var(--hue), 90%, 55%, 0.35),
-    transparent 40%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 1;
+.skill-card:hover .skill-card__inner {
+  border-color: hsla(var(--hue), 90%, 55%, 0.5);
+  box-shadow:
+    0 15px 40px hsla(var(--hue), 90%, 55%, 0.25),
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-.skill-tilt:hover .skill-tilt__glow {
-  opacity: 1;
+/* ---- Animation flottante ---- */
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%      { transform: translateY(-8px) rotate(-1.5deg); }
+  50%      { transform: translateY(0) rotate(1.5deg); }
+  75%      { transform: translateY(8px) rotate(-1deg); }
 }
 
-.skill-tilt__icon {
-  position: relative;
-  z-index: 2;
+/* ---- Icône + nom ---- */
+.skill-card__icon {
   font-size: 2.75rem;
   line-height: 1;
+  z-index: 2;
   transition: transform 0.3s ease;
 }
 
-.skill-tilt__icon--text {
+.skill-card__icon--text {
   font-family: var(--second-font);
   font-size: 2rem;
   font-weight: 700;
@@ -1079,9 +1114,7 @@ span {
   letter-spacing: 1px;
 }
 
-.skill-tilt__name {
-  position: relative;
-  z-index: 2;
+.skill-card__name {
   font-family: var(--second-font);
   font-size: 0.75rem;
   font-weight: 500;
@@ -1089,17 +1122,64 @@ span {
   text-transform: uppercase;
   color: var(--title-color);
   text-align: center;
+  z-index: 2;
   transition: transform 0.3s ease;
 }
 
-.skill-tilt:hover .skill-tilt__icon,
-.skill-tilt:hover .skill-tilt__name {
+.skill-card:hover .skill-card__icon,
+.skill-card:hover .skill-card__name {
   transform: translateZ(30px);
 }
 
-/* GitHub a une icône sombre — on la force en blanc en mode sombre */
-.skill-tilt__icon.devicon-github-original {
+/* GitHub en blanc en mode sombre */
+.skill-card__icon.devicon-github-original {
   color: #ffffff;
+}
+
+/* ---- Mode clair ---- */
+:root[data-theme="light"] .skill-card__inner {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+:root[data-theme="light"] .skill-card__icon.devicon-github-original {
+  color: #181717;
+}
+
+/* ---- Responsive ---- */
+@media screen and (max-width: 992px) {
+  .skills__row {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .skills__grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-card__icon { font-size: 2rem; }
+  .skill-card__name { font-size: 0.65rem; }
+}
+
+@media screen and (max-width: 480px) {
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .skill-card__icon { font-size: 1.75rem; }
+  .skill-card__name { font-size: 0.6rem; }
+  .skills__subtitle { font-size: 0.85rem; letter-spacing: 1px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-card { animation: none; }
 }
 
 /* Mode clair */
@@ -1114,47 +1194,6 @@ span {
 :root[data-theme="light"] .skill-tilt__icon.devicon-github-original {
   color: #181717;
 }
-
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .skills__grid {
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-    gap: 1rem;
-  }
-
-  .skill-tilt__icon {
-    font-size: 2.25rem;
-  }
-
-  .skill-tilt__name {
-    font-size: 0.7rem;
-  }
-
-  .skills__container {
-    gap: 3rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .skills__grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-  }
-
-  .skill-tilt__icon {
-    font-size: 1.75rem;
-  }
-
-  .skill-tilt__name {
-    font-size: 0.6rem;
-  }
-
-  .skills__subtitle {
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-  }
-}
-
 
 /* Mode clair */
 :root[data-theme="light"] .skill-tilt__inner {

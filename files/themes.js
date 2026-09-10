@@ -1,8 +1,6 @@
-// ===== GESTIONNAIRE DE THÈME - VERSION UNIFIÉE =====
-// Couleurs + Mode clair/sombre dans la même palette
+// ===== GESTIONNAIRE DE THÈME + EFFET MAGNÉTIQUE =====
 
 (function() {
-    // Initialisation
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initThemeManager);
     } else {
@@ -23,7 +21,6 @@
             return;
         }
 
-        // ===== 1. DÉFINIR LES COULEURS =====
         const couleurs = [
             { hue: 330, nom: 'Rose' },
             { hue: 255, nom: 'Violet' },
@@ -35,7 +32,6 @@
             { hue: 358, nom: 'Rouge' }
         ];
 
-        // ===== 2. CONSTRUIRE LA PALETTE =====
         palette.innerHTML = '';
 
         couleurs.forEach(c => {
@@ -56,7 +52,6 @@
         modeBtn.id = 'palette-mode-toggle';
         palette.appendChild(modeBtn);
 
-        // ===== 3. RESTAURER LES PRÉFÉRENCES =====
         const savedHue = localStorage.getItem('themeHue');
         if (savedHue) {
             document.documentElement.style.setProperty('--hue', savedHue);
@@ -66,9 +61,6 @@
         document.documentElement.setAttribute('data-theme', savedMode);
         updateModeButton(modeBtn, savedMode);
 
-        // ===== 4. GESTION DES ÉVÉNEMENTS =====
-
-        // 4.1 Ouvrir/fermer la palette
         themeBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             e.preventDefault();
@@ -80,7 +72,6 @@
             palette.classList.toggle('show');
         });
 
-        // 4.2 Changer la couleur
         document.querySelectorAll('.theme-option').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -91,7 +82,6 @@
             });
         });
 
-        // 4.3 Changer le mode (clair/sombre)
         modeBtn.addEventListener('click', function(e) {
             e.stopPropagation();
 
@@ -109,7 +99,6 @@
             }, 100);
         });
 
-        // 4.4 Fermer en cliquant ailleurs
         document.addEventListener('click', function(e) {
             if (!palette.contains(e.target) && e.target !== themeBtn) {
                 palette.classList.remove('show');
@@ -124,7 +113,6 @@
         window.addEventListener('resize', () => palette.classList.remove('show'));
     }
 
-    // ===== FONCTION UTILITAIRE =====
     function updateModeButton(btn, mode) {
         if (mode === 'dark') {
             btn.textContent = '🌙 Mode sombre';
@@ -137,30 +125,33 @@
 })();
 
 
-// ===== EFFET MAGNÉTIQUE + TILT 3D SUR LES CARTES =====
+// ===== EFFET MAGNÉTIQUE SUR LES CARTES DE COMPÉTENCES =====
 (function() {
-    function initMagneticTilt() {
-        const cards = document.querySelectorAll('[data-tilt]');
+    function initMagnetic() {
+        const cards = document.querySelectorAll('.skill-card');
 
         if (!cards.length) return;
 
-        // Désactive l'effet sur mobile (tactile)
+        // Désactive sur mobile (tactile)
         if (window.matchMedia('(pointer: coarse)').matches) return;
 
-        console.log('✨ Effet magnétique chargé sur', cards.length, 'cartes');
-
         const MAX_TILT = 15;
-        const MAGNETIC_STRENGTH = 25;
-        const RADIUS = 250;
+        const MAGNETIC_STRENGTH = 20;
+        const RADIUS = 220;
+
+        console.log('🧲 Effet magnétique chargé sur', cards.length, 'cartes');
 
         document.addEventListener('mousemove', (e) => {
             cards.forEach((card) => {
-                const rect = card.getBoundingClientRect();
-                const cardCenterX = rect.left + rect.width / 2;
-                const cardCenterY = rect.top + rect.height / 2;
+                const inner = card.querySelector('.skill-card__inner');
+                if (!inner) return;
 
-                const distX = e.clientX - cardCenterX;
-                const distY = e.clientY - cardCenterY;
+                const rect = card.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                const distX = e.clientX - centerX;
+                const distY = e.clientY - centerY;
                 const distance = Math.hypot(distX, distY);
 
                 if (distance < RADIUS) {
@@ -172,35 +163,25 @@
                     const rotateX = ((e.clientY - rect.top) / rect.height - 0.5) * -MAX_TILT * strength;
                     const rotateY = ((e.clientX - rect.left) / rect.width - 0.5) * MAX_TILT * strength;
 
-                    card.style.transform = `
-                        translate3d(${moveX}px, ${moveY}px, 0)
-                        perspective(1000px)
-                        rotateX(${rotateX}deg)
-                        rotateY(${rotateY}deg)
-                        scale(${1 + strength * 0.05})
-                    `;
-
-                    const xPct = ((e.clientX - rect.left) / rect.width) * 100;
-                    const yPct = ((e.clientY - rect.top) / rect.height) * 100;
-                    card.style.setProperty('--mouse-x', `${xPct}%`);
-                    card.style.setProperty('--mouse-y', `${yPct}%`);
+                    inner.style.setProperty('--magnet-x', `${moveX}px`);
+                    inner.style.setProperty('--magnet-y', `${moveY}px`);
+                    inner.style.setProperty('--tilt-x', `${rotateX}deg`);
+                    inner.style.setProperty('--tilt-y', `${rotateY}deg`);
+                    inner.style.setProperty('--magnet-scale', `${1 + strength * 0.03}`);
                 } else {
-                    card.style.transform = 'translate3d(0,0,0) perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                    inner.style.setProperty('--magnet-x', '0px');
+                    inner.style.setProperty('--magnet-y', '0px');
+                    inner.style.setProperty('--tilt-x', '0deg');
+                    inner.style.setProperty('--tilt-y', '0deg');
+                    inner.style.setProperty('--magnet-scale', '1');
                 }
-            });
-        });
-
-        document.addEventListener('mouseleave', () => {
-            cards.forEach((card) => {
-                card.style.transform = 'translate3d(0,0,0) perspective(1000px) rotateX(0) rotateY(0) scale(1)';
             });
         });
     }
 
-    // Attendre que le DOM soit prêt
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initMagneticTilt);
+        document.addEventListener('DOMContentLoaded', initMagnetic);
     } else {
-        initMagneticTilt();
+        initMagnetic();
     }
 })();
