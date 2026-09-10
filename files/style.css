@@ -1711,6 +1711,34 @@ span {
 }
 
 /* ============================================================
+   COULEURS OFFICIELLES DES RÉSEAUX SOCIAUX
+   ============================================================ */
+.contact__link i {
+  font-size: 1.4rem;
+  transition: transform .3s, filter .3s;
+}
+
+/* Couleurs par réseau */
+.contact__link i.ri-linkedin-box-fill { color: #0A66C2; }
+.contact__link i.ri-github-fill       { color: #ffffff; }
+.contact__link i.ri-dribbble-fill     { color: #EA4C89; }
+.contact__link i.ri-gitlab-fill       { color: #FC6D26; }
+.contact__link i.ri-whatsapp-fill     { color: #25D366; }
+.contact__link i.ri-messenger-fill    { color: #0084FF; }
+.contact__link i.ri-telegram-fill     { color: #26A5E4; }
+.contact__link i.ri-instagram-fill    { color: #E4405F; }
+
+/* Effet au survol */
+.contact__link:hover i {
+  transform: translateX(4px) scale(1.15);
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+:root[data-theme="light"] .contact__link i.ri-github-fill {
+  color: #181717;
+}
+
+/* ============================================================
    FIX RESPONSIVE — SERVICES (anti-chevauchement du bouton)
    ============================================================ */
 @media screen and (max-width: 768px) {
