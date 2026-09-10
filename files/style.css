@@ -354,7 +354,7 @@ span {
 
 @media screen and (max-width: 768px) {
   .language-selector {
-    top: 220px;
+    top: 160px;
     right: 15px;
     padding: 5px;
     gap: 4px;
